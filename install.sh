@@ -2,8 +2,8 @@
 #!/bin/bash
 
 # Cài đặt các gói cần thiết
-apt-get update
-apt-get install -y python3 python3-pip git
+sudo apt-get update
+sudo apt-get install -y python3 python3-pip git
 
 # Clone repository từ GitHub
 git clone https://github.com/080824-vip/email-123-phut.git
@@ -13,7 +13,7 @@ cd email-123-phut
 pip3 install -r requirements.txt gunicorn
 
 # Cài đặt và cấu hình Nginx
-apt-get install -y nginx
+sudo apt-get install -y nginx
 cat <<EOT > /etc/nginx/sites-available/email-123-phut
 server {
     listen 8080;
@@ -30,8 +30,8 @@ server {
 EOT
 rm -f /etc/nginx/sites-enabled/email-123-phut
 ln -s /etc/nginx/sites-available/email-123-phut /etc/nginx/sites-enabled
-nginx -t
-systemctl restart nginx
+sudo nginx -t
+sudo systemctl restart nginx
 
 # Chạy server Flask với Gunicorn
 NUM_WORKERS=$(($(nproc) * 2))
