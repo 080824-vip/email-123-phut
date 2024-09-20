@@ -10,7 +10,7 @@ git clone https://github.com/080824-vip/email-123-phut.git
 cd email-123-phut
 
 # Cài đặt các thư viện Python cần thiết
-pip3 install -r requirements.txt
+pip3 install -r requirements.txt gunicorn
 
-# Chạy server Flask
-nohup python3 app.py > server.log 2>&1 &
+# Chạy server Flask với Gunicorn
+nohup gunicorn -w 2 -b 0.0.0.0:5000 app:app > server.log 2>&1 &
