@@ -13,4 +13,6 @@ cd email-123-phut
 pip3 install -r requirements.txt gunicorn
 
 # Chạy server Flask với Gunicorn
-nohup gunicorn -w 2 -b 0.0.0.0:5000 app:app > server.log 2>&1 &
+# Sử dụng số lượng worker bằng 2-4 lần số lượng CPU
+NUM_WORKERS=$(($(nproc) * 2))
+nohup gunicorn -w $NUM_WORKERS -b 0.0.0.0:5000 app:app > server.log 2>&1 &
