@@ -16,7 +16,7 @@ pip3 install -r requirements.txt gunicorn
 apt-get install -y nginx
 cat <<EOT > /etc/nginx/sites-available/email-123-phut
 server {
-    listen 80;
+    listen 8080;
     server_name _;
 
     location / {
