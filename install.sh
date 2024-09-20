@@ -28,6 +28,7 @@ server {
     }
 }
 EOT
+rm -f /etc/nginx/sites-enabled/email-123-phut
 ln -s /etc/nginx/sites-available/email-123-phut /etc/nginx/sites-enabled
 nginx -t
 systemctl restart nginx
